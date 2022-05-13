@@ -1,0 +1,75 @@
+
+State Machine - |DE1_SoC_Computer|ModelV3:modelv3|Maxpool_FC_YJWNR:Maxpool_FC_YJWNR_HVROP|state
+Name state.1001 state.1000 state.0111 state.0110 state.0101 state.0100 state.0011 state.0010 state.0001 state.0000 
+state.0000 0 0 0 0 0 0 0 0 0 0 
+state.0001 0 0 0 0 0 0 0 0 1 1 
+state.0010 0 0 0 0 0 0 0 1 0 1 
+state.0011 0 0 0 0 0 0 1 0 0 1 
+state.0100 0 0 0 0 0 1 0 0 0 1 
+state.0101 0 0 0 0 1 0 0 0 0 1 
+state.0110 0 0 0 1 0 0 0 0 0 1 
+state.0111 0 0 1 0 0 0 0 0 0 1 
+state.1000 0 1 0 0 0 0 0 0 0 1 
+state.1001 1 0 0 0 0 0 0 0 0 1 
+
+State Machine - |DE1_SoC_Computer|state
+Name state.0111 state.0110 state.0101 state.0100 state.0011 state.0010 state.0001 state.0000 
+state.0000 0 0 0 0 0 0 0 0 
+state.0001 0 0 0 0 0 0 1 1 
+state.0010 0 0 0 0 0 1 0 1 
+state.0011 0 0 0 0 1 0 0 1 
+state.0100 0 0 0 1 0 0 0 1 
+state.0101 0 0 1 0 0 0 0 1 
+state.0110 0 1 0 0 0 0 0 1 
+state.0111 1 0 0 0 0 0 0 1 
+
+State Machine - |DE1_SoC_Computer|ModelV3:modelv3|state
+Name state.101 state.100 state.011 state.010 state.001 state.000 
+state.000 0 0 0 0 0 0 
+state.001 0 0 0 0 1 1 
+state.010 0 0 0 1 0 1 
+state.011 0 0 1 0 0 1 
+state.100 0 1 0 0 0 1 
+state.101 1 0 0 0 0 1 
+
+State Machine - |DE1_SoC_Computer|ModelV3:modelv3|Maxpool_ZSYYF:Maxpool_ZSYYF_TPVBU|state
+Name state.1011 state.1010 state.1001 state.1000 state.0111 state.0110 state.0101 state.0100 state.0011 state.0010 state.0001 state.0000 
+state.0000 0 0 0 0 0 0 0 0 0 0 0 0 
+state.0001 0 0 0 0 0 0 0 0 0 0 1 1 
+state.0010 0 0 0 0 0 0 0 0 0 1 0 1 
+state.0011 0 0 0 0 0 0 0 0 1 0 0 1 
+state.0100 0 0 0 0 0 0 0 1 0 0 0 1 
+state.0101 0 0 0 0 0 0 1 0 0 0 0 1 
+state.0110 0 0 0 0 0 1 0 0 0 0 0 1 
+state.0111 0 0 0 0 1 0 0 0 0 0 0 1 
+state.1000 0 0 0 1 0 0 0 0 0 0 0 1 
+state.1001 0 0 1 0 0 0 0 0 0 0 0 1 
+state.1010 0 1 0 0 0 0 0 0 0 0 0 1 
+state.1011 1 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |DE1_SoC_Computer|ModelV3:modelv3|Conv2DSum1D_LXJTZ:Conv2DSum1D_LXJTZ_XATMI|state
+Name state.1011 state.1010 state.1001 state.1000 state.0111 state.0110 state.0101 state.0100 state.0011 state.0010 state.0001 state.0000 
+state.0000 0 0 0 0 0 0 0 0 0 0 0 0 
+state.0001 0 0 0 0 0 0 0 0 0 0 1 1 
+state.0010 0 0 0 0 0 0 0 0 0 1 0 1 
+state.0011 0 0 0 0 0 0 0 0 1 0 0 1 
+state.0100 0 0 0 0 0 0 0 1 0 0 0 1 
+state.0101 0 0 0 0 0 0 1 0 0 0 0 1 
+state.0110 0 0 0 0 0 1 0 0 0 0 0 1 
+state.0111 0 0 0 0 1 0 0 0 0 0 0 1 
+state.1000 0 0 0 1 0 0 0 0 0 0 0 1 
+state.1001 0 0 1 0 0 0 0 0 0 0 0 1 
+state.1010 0 1 0 0 0 0 0 0 0 0 0 1 
+state.1011 1 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |DE1_SoC_Computer|ModelV3:modelv3|Conv2D_XSIDO:Conv2D_XSIDO_CWNFV|state
+Name state.0111 state.0110 state.0101 state.0100 state.0011 state.0010 state.0001 state.0000 state.1000 
+state.0000 0 0 0 0 0 0 0 0 0 
+state.0001 0 0 0 0 0 0 1 1 0 
+state.0010 0 0 0 0 0 1 0 1 0 
+state.0011 0 0 0 0 1 0 0 1 0 
+state.0100 0 0 0 1 0 0 0 1 0 
+state.0101 0 0 1 0 0 0 0 1 0 
+state.0110 0 1 0 0 0 0 0 1 0 
+state.0111 1 0 0 0 0 0 0 1 0 
+state.1000 0 0 0 0 0 0 0 1 1 
