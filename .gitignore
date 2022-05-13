@@ -2,3 +2,4 @@ src/verilog
 work/*
 .DS_Store
 **/*.zip
+**/*.venv
