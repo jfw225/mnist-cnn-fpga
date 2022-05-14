@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import logo from './logo.svg';
-import './App.css';
-import Latex from "react-latex";
-import ReactMarkdown from "react-markdown";
+import './assets/css/App.css';
 
-import ReportFile, { FetchReport } from "./ReportFile";
+import FetchReport from "./ReportFile";
 import MarkdownRender from './MarkdownRender';
-
+import "./assets/css/w3.css";
+import { HeaderGif } from './assets';
 
 function App() {
 	// const [htmlFile, setHtmlFile] = useState({ __html: "<div> <h3> hi </h3> </div>" })
-	const [htmlFile, setHtmlFile] = useState({ __html: ReportFile })
 	const [MDFile, setMDFile] = useState("");
 
 	useEffect(() => {
@@ -18,24 +16,51 @@ function App() {
 	}, [])
 	console.log(MDFile);
 
-	// return <MarkdownRender>{MDFile}</MarkdownRender>;
-	// return <MarkdownRender children={"## Test\nHere is my name $x+5$"} />
-	// return <MarkdownRender children={MDFile} />
-	// return <MarkdownRender>{MDFile}</MarkdownRender>
-	// return <ReactMarkdown>{MDFile}</ReactMarkdown>;
-	// return <div dangerouslySetInnerHTML={htmlFile} ></div>
 	return (
-		<div className="App">
+		<body className="tBody">
 			<link
 				href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css"
 				rel="stylesheet"
 			/>
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<MarkdownRender>{MDFile}</MarkdownRender>
-			</header>
-		</div>
+
+			<div className="w3-top">
+				<div className="w3-bar w3-black w3-card">
+					<a className="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" title="Toggle Navigation Menu"><i className="fa fa-bars"></i></a>
+					<a href="#" className="w3-bar-item w3-button w3-padding-large">HOME</a>
+				</div>
+			</div>
+
+			<div className="w3-content" style={{ maxWidth: 2000, marginTop: 46 }}>
+				{/* <div className="tContent"> */}
+				<div className="mySlides w3-display-container w3-center">
+					<img src={HeaderGif} className="header-image" />
+
+				</div>
+				<div className="w3-container w3-content w3-center w3-padding-64" style={{ maxWidth: 800 }} id="report">
+					<h2 className="w3-wide">Report</h2>
+					<p className="w3-justify">
+
+						<MarkdownRender>{MDFile}</MarkdownRender>
+					</p>
+				</div>
+			</div>
+		</body >
+
 	);
+
+
+	// return (
+	// 	<div className="App">
+	// <link
+	// 	href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css"
+	// 	rel="stylesheet"
+	// />
+	// 		<header className="App-header">
+	// 			<img src={logo} className="App-logo" alt="logo" />
+	// 			<MarkdownRender>{MDFile}</MarkdownRender>
+	// 		</header>
+	// 	</div>
+	// );
 }
 
 export default App;
