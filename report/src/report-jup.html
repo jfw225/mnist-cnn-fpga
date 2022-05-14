@@ -14601,6 +14601,19 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Introduction-to-Notation">Introduction to Notation<a class="anchor-link" href="#Introduction-to-Notation">&#182;</a></h2><p>For some array $A$, let $A:[d1,\dots,d_i,\dots,d_n]$ indicate that that $A$ is $n$-dimensional and each dimension $1\leq i\leq n$ has a length of $d_i$. For example,
+$$A:[2, 3]=\begin{bmatrix} a_{1, 1} &amp; a_{1,2} &amp; a_{1,3} \\ a_{2,1} &amp; a_{2,2} &amp; a_{2,3} \end{bmatrix}.$$</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="High-Level-Design">High Level Design<a class="anchor-link" href="#High-Level-Design">&#182;</a></h2>
 </div>
 </div>
@@ -14613,6 +14626,69 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Program/Hardware-Design">Program/Hardware Design<a class="anchor-link" href="#Program/Hardware-Design">&#182;</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Model-Implementation">Model Implementation<a class="anchor-link" href="#Model-Implementation">&#182;</a></h3><p>In this section, we will dive deep into the math behind each of the layers in the model and how we rederived the transformation functions of each layer to fit on the FPGA.</p>
+<p>As a reminder, our model ingests some image of a hand-drawn digit and outputs a number between 0 and 9 which corresponds to the prediction of the model. The image is a 28 by 28 2D array of values between 0 and 255, or rather, some input image $img$ can be represented as
+$$img=\begin{bmatrix} 
+  p_{1,1} &amp; \dots &amp; p_{1,j} &amp; \dots &amp; p_{1,28} \\ 
+  \vdots &amp; \ddots &amp; &amp; &amp; \vdots \\
+  p_{i, 1} &amp; \dots &amp; p_{i, j} &amp; \dots &amp; p_{i, 28} \\
+  \vdots &amp; &amp; &amp; \ddots &amp; \vdots \\
+  p_{28, 1} &amp; \dots &amp; p_{28, j} &amp; \dots &amp; p_{28, 28}
+\end{bmatrix}$$
+such that $0\leq p_{i,j}\leq255$.</p>
+<p>Moreover, we can think of our model $M$ as a function that maps some input $img$ to some output prediction $pred$, or rather, the inference of our model can be represented by 
+$$M(img)=pred$$
+for some output prediction $0\leq pred\leq9$.</p>
+<p>Furtheremore, we can also express each of the layers in our model as a a function. Let $L=\{L_1,\dots,L_i,\dots,L_4\} be the layers in our model. Then we can represent each layer $L_i$ as some function 
+$$L_i(V_i^{in})=V_i^{out},$$
+where $V<em>{in}$ and $V</em>{out}$ are matrices whose shapes are defined by $L_i$.</p>
+<p>With this new notation, we can redfine $M$ in terms of its layers:
+\begin{align*}
+  M(img) &amp; =L_4(L_3(L_2(L_1(img)))) \\
+  &amp; =pred.
+\end{align*}
+Thus, a model's prediction is simply the output of its cascaded layer functions.</p>
+<p>Let's now take a look at each of the layers and how we can rederive their functions to be built on the FPGA.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Layer-1:-Conv2D">Layer 1: Conv2D<a class="anchor-link" href="#Layer-1:-Conv2D">&#182;</a></h4><p>The 2D convolutional layer has weights $W^1$ and biases $B^1$ that are defined by 
+\begin{align*}
+    &amp; W^1:[x,y,z]=
+    \begin{bmatrix}
+        \begin{bmatrix}
+            W^1_{1,1} = \begin{bmatrix} o_1 &amp; \dots &amp; o_z \end{bmatrix} \\
+            \vdots \\
+            W^1_{1,y} = \begin{bmatrix} p_1 &amp; \dots &amp; p_z \end{bmatrix}
+        \end{bmatrix}
+        &amp; \dots &amp;
+        \begin{bmatrix}
+            W^1_{x, 1} = \begin{bmatrix} q_1 &amp; \dots &amp; q_z \end{bmatrix} \\
+            \vdots \\
+            W^1_{x, y} = \begin{bmatrix} r_1 &amp; \dots &amp; r_z \end{bmatrix}
+        \end{bmatrix}
+    \end{bmatrix}, \\
+    &amp; B^1:[z]=\begin{bmatrix} b_1 &amp; \dots &amp; b_z \end{bmatrix}.
+\end{align*}</p>
+
 </div>
 </div>
 </div>
