@@ -6,6 +6,7 @@ import FetchReport from "./ReportFile";
 import MarkdownRender from './MarkdownRender';
 import "./assets/css/w3.css";
 import { HeaderGif } from './assets';
+import { ParseMD } from './MDParser';
 
 function App() {
 	// const [htmlFile, setHtmlFile] = useState({ __html: "<div> <h3> hi </h3> </div>" })
@@ -14,7 +15,8 @@ function App() {
 	useEffect(() => {
 		FetchReport(setMDFile);
 	}, [])
-	console.log(MDFile);
+	// console.log(MDFile);
+	let k = ParseMD(MDFile);
 
 	return (
 		<body className="tBody">
@@ -38,10 +40,10 @@ function App() {
 				</div>
 				<div className="w3-container w3-content w3-center w3-padding-64" style={{ maxWidth: 800 }} id="report">
 					<h2 className="w3-wide">Report</h2>
-					<p className="w3-justify">
-
-						<MarkdownRender>{MDFile}</MarkdownRender>
-					</p>
+					<div className="w3-justify">
+						{k}
+						{/* <MarkdownRender>{MDFile}</MarkdownRender> */}
+					</div>
 				</div>
 			</div>
 		</body >
