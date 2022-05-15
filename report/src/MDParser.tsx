@@ -1,17 +1,24 @@
 import MarkdownRender from './MarkdownRender';
 
 
-const MATCHES = [
-    { re: /^#{1}\s.*/, elem: (str: string) => <h1 className="w3-wide">{str}</h1> }
+const MATCHERS = [
+    {
+        re: /^#{1}\s*((?:\w|\s)+)$/,
+        elem: (match: RegExpMatchArray) => <h1 className="w3-wide">{match[1]}</h1>
+    },
+    {
+        re: /^#{2}\s*((?:\w|\s)+)$/,
+        elem: (match: RegExpMatchArray) => <h2 className="w3-wide"><u>{match[1]}</u></h2>
+    }
 ]
 
 function strToElem(str: string) {
-    for (const { re, elem } of MATCHES) {
-        console.log(str, re.exec(str));
-        if (re.exec(str))
-            re.split();
+    for (const { re, elem } of MATCHERS) {
+        // console.log(str, re.exec(str));
+        let match = str.match(re);
+        if (match)
 
-        return elem(str);
+            return elem(match);
     }
 
     return str;
@@ -26,20 +33,28 @@ export function ParseMD(mdBody: string): Array<JSX.Element> {
     let maped_strs = mdSplit.map(strToElem);
 
     let elements: Array<JSX.Element> = [];
-    let str = "";
+    let str = "\n";
     maped_strs.forEach((v, i) => {
+        console.log(v);
         if (typeof (v) !== "string") {
 
-            if (str !== "") {
-                elements.push(<MarkdownRender>{str}</MarkdownRender>);
-                str = "";
+            if (str !== "\n") {
+                elements.push(<div className="w3-justify">
+                    <MarkdownRender>{str}</MarkdownRender>
+                </div>);
+                str = "\n";
             }
 
             return elements.push(v);
         }
 
-        str += v;
+        str += v + "\n";
     })
+
+    if (str !== "\n")
+        elements.push(<div className="w3-justify">
+            <MarkdownRender>{str}</MarkdownRender>
+        </div>);
 
     return elements;
 }

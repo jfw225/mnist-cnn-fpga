@@ -39,11 +39,9 @@ function App() {
 
 				</div>
 				<div className="w3-container w3-content w3-center w3-padding-64" style={{ maxWidth: 800 }} id="report">
-					<h2 className="w3-wide">Report</h2>
-					<div className="w3-justify">
-						{k}
-						{/* <MarkdownRender>{MDFile}</MarkdownRender> */}
-					</div>
+					{/* <h2 className="w3-wide">Report</h2> */}
+					{k}
+					{/* <MarkdownRender>{MDFile}</MarkdownRender> */}
 				</div>
 			</div>
 		</body >
