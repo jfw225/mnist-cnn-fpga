@@ -3,5 +3,3 @@ work/*
 .DS_Store
 **/*.zip
 **/*.venv
-src/
-report/build
