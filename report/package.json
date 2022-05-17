@@ -2,7 +2,7 @@
   "name": "report",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://jfw225.github.io/ece5760-final",
+  "homepage": "https://jfw225.github.io/mnist-cnn-fpga/",
   "dependencies": {
     "@babel/core": "^7.16.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
