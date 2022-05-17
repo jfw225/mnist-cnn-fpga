@@ -1,7 +1,9 @@
 import MarkdownRender from './MarkdownRender';
 
-const TITLE_REGEX = /\w|\s|\//
+/** The regex used to match container comments. */
+const CONTAINER_RE = /^<!-- container:\s*(\w*)\s*-->/;
 
+/** Object used to match strings to their proper formatters. */
 const MATCHERS = [
     {
         re: /^#{1}\s*((?:\w|\s|\/)+)$/,
@@ -10,6 +12,10 @@ const MATCHERS = [
     {
         re: /^#{2}\s*((?:\w|\s|\/)+)$/,
         elem: (match: RegExpMatchArray) => <h2 className="w3-justify"><u>{match[1]}</u></h2>
+    },
+    {
+        re: /^#{4}\s*((?:\w|\s|\/)+)$/,
+        elem: (match: RegExpMatchArray) => <h4 className="w3-justify"><u>{match[1]}</u></h4>
     }
 ]
 
@@ -17,7 +23,8 @@ type ContainerElement = JSX.Element | Array<JSX.Element>;
 
 /** The container keys. */
 enum CONTAINER_KEY {
-    DEFAULT = "default"
+    DEFAULT = "default",
+    DARK = "dark"
 };
 
 
@@ -30,6 +37,13 @@ const CONTAINER_FNS = {
             </div>
         </div>
     ),
+    [CONTAINER_KEY.DARK]: (e: ContainerElement) => (
+        <div className="w3-black">
+            <div className="w3-container w3-content w3-center w3-padding-64" style={{ maxWidth: 800 }} id="report">
+                {e}
+            </div>
+        </div>
+    )
 }
 
 function createContainer(key: CONTAINER_KEY, e: ContainerElement): JSX.Element {
@@ -67,32 +81,52 @@ export function ParseMD(mdBody: string): ContainerElement {
 
     /* String to keep track of overflow. */
     let str = "\n";
+
+    /* Function used to convert `str` to JSX element and add to `elements`. */
+    const handleStr = () => {
+        if (str !== "\n") {
+            elements.push(
+                <div className="w3-justify">
+                    <MarkdownRender>{str}</MarkdownRender>
+                </div>);
+            str = "\n";
+        }
+    };
+
+    /* Function used to convert `elements` to container and add to `containers`. */
+    const handleElements = () => {
+        if (elements.length) {
+            containers.push(createContainer(containerKey, elements));
+            elements = [];
+        }
+    };
+
     mdSplit.map(strToElem).forEach((v) => {
-        console.log(v);
+        // console.log(v);
         if (typeof (v) !== "string") {
 
-            if (str !== "\n") {
-                elements.push(
-                    <div className="w3-justify">
-                        <MarkdownRender>{str}</MarkdownRender>
-                    </div>
-                );
-                str = "\n";
-            }
+            handleStr();
 
             return elements.push(v);
         }
 
-        str += v + "\n";
+        let match = v.match(CONTAINER_RE);
+        if (match) {
+            handleStr();
+            handleElements();
+
+            containerKey = match[1] as CONTAINER_KEY;
+
+
+        } else
+            str += v + "\n";
     })
 
-    if (str !== "\n")
-        elements.push(<div className="w3-justify">
-            <MarkdownRender>{str}</MarkdownRender>
-        </div>);
+    // handle the string
+    handleStr();
 
     // create last container
-    containers.push(createContainer(containerKey, elements));
+    handleElements();
 
     return containers;
 }
