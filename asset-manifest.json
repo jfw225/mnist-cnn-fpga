@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/ece5760-final/static/css/main.d3a3f932.css",
-    "main.js": "/ece5760-final/static/js/main.04e6ad00.js",
-    "static/js/787.6af32225.chunk.js": "/ece5760-final/static/js/787.6af32225.chunk.js",
-    "static/media/headergif.gif": "/ece5760-final/static/media/headergif.9e1b05f9bfe60f4fa9c1.gif",
-    "static/media/report-jup.ipynb": "/ece5760-final/static/media/report-jup.311aafcdcb5e015954d0.ipynb",
-    "index.html": "/ece5760-final/index.html",
-    "main.d3a3f932.css.map": "/ece5760-final/static/css/main.d3a3f932.css.map",
-    "main.04e6ad00.js.map": "/ece5760-final/static/js/main.04e6ad00.js.map",
-    "787.6af32225.chunk.js.map": "/ece5760-final/static/js/787.6af32225.chunk.js.map"
+    "main.css": "/mnist-cnn-fpga/static/css/main.121e6ffc.css",
+    "main.js": "/mnist-cnn-fpga/static/js/main.7e851b34.js",
+    "static/js/787.6af32225.chunk.js": "/mnist-cnn-fpga/static/js/787.6af32225.chunk.js",
+    "static/media/headergif.gif": "/mnist-cnn-fpga/static/media/headergif.9e1b05f9bfe60f4fa9c1.gif",
+    "static/media/report-jup.ipynb": "/mnist-cnn-fpga/static/media/report-jup.1f9ce7549d29b592f30a.ipynb",
+    "index.html": "/mnist-cnn-fpga/index.html",
+    "main.121e6ffc.css.map": "/mnist-cnn-fpga/static/css/main.121e6ffc.css.map",
+    "main.7e851b34.js.map": "/mnist-cnn-fpga/static/js/main.7e851b34.js.map",
+    "787.6af32225.chunk.js.map": "/mnist-cnn-fpga/static/js/787.6af32225.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d3a3f932.css",
-    "static/js/main.04e6ad00.js"
+    "static/css/main.121e6ffc.css",
+    "static/js/main.7e851b34.js"
   ]
 }
