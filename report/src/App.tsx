@@ -9,6 +9,8 @@ import { ParseMD } from './MDParser';
 import hljs from "highlight.js";
 import "highlight.js/styles/github-dark-dimmed.css";
 
+import tf from "./images/tf.png";
+
 function App() {
 	// const [htmlFile, setHtmlFile] = useState({ __html: "<div> <h3> hi </h3> </div>" })
 	const [MDFile, setMDFile] = useState("");
@@ -48,6 +50,7 @@ function App() {
 					<img src={HeaderGif} className="header-image" />
 
 				</div>
+
 				{/* <div className="w3-white"> */}
 				{/* <div className="w3-container w3-content w3-center w3-padding-64" style={{ maxWidth: 800 }} id="report"> */}
 				{/* <h2 className="w3-wide">Report</h2> */}

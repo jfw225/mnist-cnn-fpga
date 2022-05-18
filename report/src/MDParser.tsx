@@ -1,5 +1,14 @@
 import MarkdownRender from './MarkdownRender';
 
+/** Mapping of images to make sure they properly load at runtime. */
+const IMAGE_MAP = {
+    "./images/tf.png": require("./images/tf.png"),
+    "./images/conv.png": require("./images/conv.png"),
+    "./images/sigmoid.png": require("./images/sigmoid.png"),
+    "./images/mp.png": require("./images/mp.png"),
+    "./images/fullyconnect.png": require("./images/fullyconnect.png")
+};
+
 /** The regex used to match container comments. */
 const CONTAINER_RE = /^<!-- container:\s*(\w*)\s*-->/;
 
@@ -20,6 +29,16 @@ const MATCHERS = [
     {
         re: /^#{5}\s*((?:\w|\s|:|\/)+)$/,
         elem: (match: RegExpMatchArray) => <h4 className="w3-justify"><b>{match[1]}</b></h4>
+    },
+    {
+        re: /^!\[.*\]\((.*)\)$/,
+        elem: (match: RegExpMatchArray) => {
+            if (!IMAGE_MAP.hasOwnProperty(match[1]))
+                throw new Error(`Must add ${match[1]} to the image map!`)
+
+            // @ts-ignore
+            return <img className="w3-justify" src={IMAGE_MAP[match[1]]} />;
+        }
     }
 ]
 
