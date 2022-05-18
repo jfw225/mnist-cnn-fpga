@@ -31,7 +31,7 @@ const MATCHERS = [
         elem: (match: RegExpMatchArray) => <h4 className="w3-justify"><b>{match[1]}</b></h4>
     },
     {
-        re: /^!\[.*\]\((.*)\)$/,
+        re: /^!\[(?:\w|\s)*\]\((.*)\)$/,
         elem: (match: RegExpMatchArray) => {
             if (!IMAGE_MAP.hasOwnProperty(match[1]))
                 throw new Error(`Must add ${match[1]} to the image map!`)
@@ -39,6 +39,14 @@ const MATCHERS = [
             // @ts-ignore
             return <img className="w3-justify" src={IMAGE_MAP[match[1]]} />;
         }
+    },
+    {
+        re: /^!\[video\]\[((?:\w|\s)+)\]\((.*)\)$/,
+        elem: (match: RegExpMatchArray) => {
+
+            return <iframe width="560" height="315" src={match[2].replace("watch?v=", "embed/")} title={match[1]} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>;
+        }
+
     }
 ]
 

@@ -158,7 +158,7 @@ class Model(V_Target):
 
     def _configure_ports(self):
         """
-        Creates all of the necessary ports. 
+        Creates all of the necessary ports.
         """
 
         # configure the input ports
@@ -196,7 +196,7 @@ class Model(V_Target):
 
     def _set_up_layers(self, *specs: Iterable[LayerSpec]) -> None:
         """
-        Sets up each layer with the appropriate input/output objects. 
+        Sets up each layer with the appropriate input/output objects.
         """
 
         # set initial I/O objects
@@ -205,13 +205,15 @@ class Model(V_Target):
         # create a list to hold the objects that need to get created
         objects = list()
 
-        for i, (LayerT, weights_np, biases_np, input_shape, output_shape) in enumerate(specs):
+        for i, (LayerT, weights_np, biases_np,
+                input_shape, output_shape) in enumerate(specs):
             print(f"Creating Layer: {LayerT}")
 
             input_size = np.prod(input_shape)
             output_size = np.prod(output_shape)
 
-            assert input_mem.size == input_size, f"{input_mem} must have size of {input_size}"
+            assert_msg = f"{input_mem} must have size of {input_size}"
+            assert input_mem.size == input_size, assert_msg
 
             # get the input mem conn spec
             im_cs = self.memories[input_mem]
