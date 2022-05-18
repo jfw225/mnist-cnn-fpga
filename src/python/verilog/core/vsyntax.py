@@ -561,22 +561,6 @@ def V_Par(
     return V_ObjectBase.from_obj(obj, name=f"({obj})")
 
 
-def V_Chain_Op(
-    operator: str,
-    *items: Iterable[V_Expression or V_ObjectBase]
-) -> V_Expression:
-    assert isinstance(operator, str)
-
-    return V_Expression(
-        f" {operator} \n\t\t".join(map(str, items))
-    )
-
-
-def V_Sum(*items: Iterable[V_Expression or V_ObjectBase]) -> V_Expression:
-
-    return V_Chain_Op("+", *items)
-
-
 def V_Ternary(predicate: V_Expression or V_ObjectBase):
     assert isinstance(predicate, (V_Expression, V_ObjectBase)), f"{predicate}"
 
@@ -594,3 +578,19 @@ def V_Ternary(predicate: V_Expression or V_ObjectBase):
         )
 
     return build
+
+
+def V_Chain_Op(
+    operator: str,
+    *items: Iterable[V_Expression or V_ObjectBase]
+) -> V_Expression:
+    assert isinstance(operator, str)
+
+    return V_Expression(
+        f" {operator} \n\t\t".join(map(str, items))
+    )
+
+
+def V_Sum(*items: Iterable[V_Expression or V_ObjectBase]) -> V_Expression:
+
+    return V_Chain_Op("+", *items)

@@ -8,7 +8,7 @@ from verilog.core.vtypes import V_DType, V_Input, V_Output
 class V_Target(V_Module):
     """
     The implementation of a module that can be used as the target 
-    function in a `V_Map` call. 
+    function in any module. 
 
     Attributes:
         `clk` -- 1-bit input signal

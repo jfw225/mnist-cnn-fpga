@@ -13,14 +13,6 @@ from verilog.targets.signed_sigmoid import SignedSigmoid
 from verilog.utils import id_generator, nameof
 
 
-"""
-TODO:
-
-create a register array for the values of sub
-have a register array that keeps the values of the filter
-"""
-
-
 class Conv2D(Layer):
     """
     img of size (n, n)
@@ -237,8 +229,9 @@ class Conv2D(Layer):
         x, y, z = self.weights_np.shape
 
         vsm = V_StateMachine(_StReset, _StWaitValid,
-                             _StResetSub, _StSetInpAddr, _StSubBuffer, _StSetSub, _StComputeConv,
-                             _StIncWeightIndices, _StIncTargetIndices)
+                             _StResetSub, _StSetInpAddr, _StSubBuffer,
+                             _StSetSub, _StComputeConv, _StIncWeightIndices,
+                             _StIncTargetIndices)
 
         # instantiate x * x signed mult modules
         mult = self.signed_mult

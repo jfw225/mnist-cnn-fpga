@@ -88,7 +88,7 @@ class V_StDone(V_State):
 class V_StateMachine:
     """ 
     Verilog implementation of a finite state machine.
-     """
+    """
 
     def __init__(
         self,

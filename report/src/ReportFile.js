@@ -14,12 +14,12 @@ export default async function FetchReport(setMDFile) {
             let match = cell.source[0].match(LANG_RE);
 
             if (!match)
-                throw Error(`${cell}`);
+                throw Error(`${cell.source}`);
 
             return (str + "\n```" + `${match[1]}\n` +
                 cell.source.slice(1).join("") + "\n```\n");
         } else
-            throw Error(`${cell}`);
+            throw Error(`${cell.source}`);
 
     }, "").replaceAll("$$", "\n$$$\n");
 

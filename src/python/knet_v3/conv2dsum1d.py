@@ -232,7 +232,7 @@ class Conv2DSum1D(Layer):
         # Z1 = np.array([convolve_flat(x[:, :, i], weights_np[:, :, :, i])
         #                for i in range(c)])
         Z1 = sum([convolve_flat(x[:, :, i], weights_np[:, :, :, i])
-                 for i in range(c)])
+                  for i in range(c)])
 
         return Z1 + biases_np
 
@@ -276,9 +276,10 @@ class Conv2DSum1D(Layer):
 
         *_, o1, o2, c = self.output_shape
 
-        vsm = V_StateMachine(_StReset, _StWaitValid, _StResetSumArr, _StResetSub, _StSetInpAddr,
-                             _StSubBuffer, _StSetSub, _StComputeConv,
-                             _StIncWeightIndices, _StIncTargetIndices, _StWriteData, _StWriteBuffer)
+        vsm = V_StateMachine(_StReset, _StWaitValid, _StResetSumArr,
+                             _StResetSub, _StSetInpAddr, _StSubBuffer,
+                             _StSetSub, _StComputeConv, _StIncWeightIndices,
+                             _StIncTargetIndices, _StWriteData, _StWriteBuffer)
 
         # instantiate x * x signed mult modules
         mult = self.signed_mult
@@ -291,7 +292,7 @@ class Conv2DSum1D(Layer):
             (V_Empty(), mult.ready),
             (self.sub[wr], mult.input_ports[0]),
             (self.weights[(self.wc * c) + self.cr +
-             (wr * z * c)], mult.input_ports[1]),
+                          (wr * z * c)], mult.input_ports[1]),
             (self.mult_outs[wr], mult.output_ports[0])
         ) for wr in range(self.w_rows)]
 

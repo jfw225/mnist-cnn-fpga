@@ -11,6 +11,30 @@ from verilog.core.vtypes import ArraySize, BitWidth, NetName, V_File, V_Input, V
 class V_Iterable(V_Module):
     """
     An object that implements an iterable verilog data structure. 
+
+    Attributes:
+        `clk` -- 1-bit input signal
+            The port connecting this module to the clock line.
+
+        `reset` -- 1-bit input signal
+            The port that enables the caller to reset this module. 
+
+        `write_en` -- 1-bit input signal
+            When this signal is HIGH, the data loaded onto `write_data` is 
+            stored in memory at address `write_addr`.
+
+        `read_addr` -- (ceil(log2(size)))-bit input signal
+            The address from which data is read.
+
+        `write_addr` -- (ceil(log2(size)))-bit input signal
+            The address to which data is written.
+
+        `read_data` -- (width)-bit output signal
+            The data line into which data is read from memory at address 
+            `read_addr`.
+
+        `write_data` -- (width)-bit input signal
+            The data line which is written to memory at address `write_addr`.
     """
 
     def __init__(

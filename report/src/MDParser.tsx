@@ -14,8 +14,12 @@ const MATCHERS = [
         elem: (match: RegExpMatchArray) => <h2 className="w3-justify"><u>{match[1]}</u></h2>
     },
     {
-        re: /^#{4}\s*((?:\w|\s|\/)+)$/,
-        elem: (match: RegExpMatchArray) => <h4 className="w3-justify"><u>{match[1]}</u></h4>
+        re: /^#{4}\s*((?:\w|\s|:|\/)+)$/,
+        elem: (match: RegExpMatchArray) => <h4 className="w3-wide"><b><u>{match[1]}</u></b></h4>
+    },
+    {
+        re: /^#{5}\s*((?:\w|\s|:|\/)+)$/,
+        elem: (match: RegExpMatchArray) => <h4 className="w3-justify"><b>{match[1]}</b></h4>
     }
 ]
 
