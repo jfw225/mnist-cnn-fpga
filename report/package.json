@@ -2,7 +2,7 @@
   "name": "report",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://jfw225.github.io/mnist-cnn-fpga/",
+  "homepage": "http://jfw225.github.io/mnist-cnn-fpga/",
   "dependencies": {
     "@babel/core": "^7.16.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
@@ -31,6 +31,7 @@
     "eslint-webpack-plugin": "^3.1.1",
     "file-loader": "^6.2.0",
     "fs-extra": "^10.0.0",
+    "highlight.js": "^11.5.1",
     "html-webpack-plugin": "^5.5.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.4.3",
@@ -51,6 +52,7 @@
     "react-markdown": "^8.0.3",
     "react-mathjax": "^1.0.1",
     "react-refresh": "^0.11.0",
+    "react-syntax-highlighter": "^15.5.0",
     "rehype-katex": "^6.0.2",
     "remark-math": "^5.1.1",
     "resolve": "^1.20.0",
@@ -93,6 +95,8 @@
     ]
   },
   "devDependencies": {
+    "@types/highlightjs": "^9.12.2",
+    "@types/react-highlight": "^0.12.5",
     "@types/react-latex": "^2.0.0",
     "gh-pages": "^4.0.0"
   },

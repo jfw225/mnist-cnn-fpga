@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
-import logo from './logo.svg';
 import './assets/css/App.css';
 
 import FetchReport from "./ReportFile";
-import MarkdownRender from './MarkdownRender';
 import "./assets/css/w3.css";
 import { HeaderGif } from './assets';
 import { ParseMD } from './MDParser';
+
+import hljs from "highlight.js";
+import "highlight.js/styles/github-dark-dimmed.css";
 
 function App() {
 	// const [htmlFile, setHtmlFile] = useState({ __html: "<div> <h3> hi </h3> </div>" })
@@ -14,12 +15,21 @@ function App() {
 
 	useEffect(() => {
 		FetchReport(setMDFile);
-	}, [])
+
+	}, []);
+
+	useEffect(() => {
+		document.querySelectorAll("pre code").forEach(block => {
+			hljs.highlightBlock(block as HTMLElement);
+		});
+	})
 	// console.log(MDFile);
 	let k = ParseMD(MDFile);
 
 	return (
 		<body className="tBody">
+			<link rel="stylesheet" href="/path/to/styles/default.css" />
+
 			<link
 				href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css"
 				rel="stylesheet"
