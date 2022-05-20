@@ -19,7 +19,7 @@ const MATCHERS = [
         elem: (match: RegExpMatchArray) => <h1 className="w3-wide"><b>{match[1]}</b></h1>
     },
     {
-        re: /^#{2}\s*((?:\w|\s|\/)+)$/,
+        re: /^#{2}\s*((?:\w|\s|\/|-)+)$/,
         elem: (match: RegExpMatchArray) => <h2 className="w3-justify"><u>{match[1]}</u></h2>
     },
     {
