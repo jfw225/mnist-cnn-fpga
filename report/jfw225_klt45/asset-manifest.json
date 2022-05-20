@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/mnist-cnn-fpga/static/css/main.121e6ffc.css",
+    "main.js": "/mnist-cnn-fpga/static/js/main.b09c083a.js",
+    "static/js/787.6af32225.chunk.js": "/mnist-cnn-fpga/static/js/787.6af32225.chunk.js",
+    "static/media/headergif.gif": "/mnist-cnn-fpga/static/media/headergif.9e1b05f9bfe60f4fa9c1.gif",
+    "static/media/report-jup.ipynb": "/mnist-cnn-fpga/static/media/report-jup.6102d7d5fa516b38df74.ipynb",
+    "static/media/conv.png": "/mnist-cnn-fpga/static/media/conv.487dd8c1ec0683ec8f26.png",
+    "static/media/mp.png": "/mnist-cnn-fpga/static/media/mp.73c28973124078fab4b5.png",
+    "static/media/tf.png": "/mnist-cnn-fpga/static/media/tf.549d509cee6d831b0282.png",
+    "static/media/fullyconnect.png": "/mnist-cnn-fpga/static/media/fullyconnect.11df96956fa06d04e6a9.png",
+    "static/media/sigmoid.png": "/mnist-cnn-fpga/static/media/sigmoid.3a41e24ea6cb2430f21b.png",
+    "index.html": "/mnist-cnn-fpga/index.html",
+    "main.121e6ffc.css.map": "/mnist-cnn-fpga/static/css/main.121e6ffc.css.map",
+    "main.b09c083a.js.map": "/mnist-cnn-fpga/static/js/main.b09c083a.js.map",
+    "787.6af32225.chunk.js.map": "/mnist-cnn-fpga/static/js/787.6af32225.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.121e6ffc.css",
+    "static/js/main.b09c083a.js"
+  ]
+}
