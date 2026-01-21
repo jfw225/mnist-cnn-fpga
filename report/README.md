@@ -1,3 +1,14 @@
+# Deploying to GitHub Pages
+
+Run
+
+```bash
+yarn build
+yarn deploy
+```
+
+to deploy the latest version of the app to https://jfw225.github.io/mnist-cnn-fpga/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
